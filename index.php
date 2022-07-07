@@ -4,6 +4,8 @@ class Movie
     public $name;
     public $genre;
     public $movie_director;
+    public $nationality;
+    public $film_length;
     public $actors = [];
 
     function __construct(string $_name, string $_genre)
@@ -24,21 +26,27 @@ class Movie
 
     public function getActor()
     {
+        echo '<span><strong>Attori</strong>:</span>';
         echo '<ul>';
         foreach ($this->actors as $actor) {
             echo "<li> $actor </li>";
         }
+        echo '</ul>';
     }
 }
 
 $star_wars = new Movie('Star Wars', 'space opera');
 $star_wars->setMovieDirector('George Lucas');
+$star_wars->nationality = 'USA';
+$star_wars->film_length = '133';
 $star_wars->addActor('Liam Neeson');
 $star_wars->addActor('Ewan McGregor');
 $star_wars->addActor('Natalie Portman');
 
 $indiana_jones = new Movie('Indiana Jones', 'Adventure');
 $indiana_jones->setMovieDirector('Steven Spielberg');
+$indiana_jones->nationality = 'USA';
+$indiana_jones->film_length = '115';
 $indiana_jones->addActor('Harrison Ford');
 
 ?>
@@ -57,16 +65,24 @@ $indiana_jones->addActor('Harrison Ford');
     <main>
         <div>
             <h2><?= $star_wars->name ?></h2>
-            <span><?= $star_wars->genre ?></span>
+            <span><strong>Genere</strong>: <?= $star_wars->genre ?></span>
             <br>
-            <span><?= $star_wars->movie_director ?></span>
+            <span><strong>Regista</strong>: <?= $star_wars->movie_director ?></span>
+            <br>
+            <span><strong>Durata</strong>: <?= $star_wars->film_length ?> min</span>
+            <span><strong>Paese</strong>: <?= $star_wars->nationality ?></span>
+            <br>
             <?php $star_wars->getActor(); ?>
         </div>
         <div>
             <h2><?= $indiana_jones->name ?></h2>
-            <span><?= $indiana_jones->genre ?></span>
+            <span><strong>Genere</strong>: <?= $indiana_jones->genre ?></span>
             <br>
-            <span><?= $indiana_jones->movie_director ?></span>
+            <span><strong>Regista</strong>: <?= $indiana_jones->movie_director ?></span>
+            <br>
+            <span><strong>Durata</strong>: <?= $indiana_jones->film_length ?> min</span>
+            <span><strong>Paese</strong>: <?= $indiana_jones->nationality ?></span>
+            <br>
             <?php $indiana_jones->getActor(); ?>
         </div>
     </main>
